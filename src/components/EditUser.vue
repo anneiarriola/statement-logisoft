@@ -237,7 +237,6 @@ export default {
       deleteFriendS: 'deleteFriend',
     }),
     onInput(formattedNumber, { number, valid, country }) {
-      console.log('code', number)
       this.phone.phone = number.international
       this.valid = valid
       this.phone.code = country.dialCode
