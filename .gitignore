@@ -1,6 +1,6 @@
 .DS_Store
 node_modules
-/dist
+# /dist
 
 
 # local env files
@@ -16,7 +16,7 @@ pnpm-debug.log*
 # Editor directories and files
 .idea
 .vscode
-*.suo
+*.suogit subtree push --prefix dist origin gh-pages
 *.ntvs*
 *.njsproj
 *.sln
