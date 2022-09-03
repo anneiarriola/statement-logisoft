@@ -1,0 +1,57 @@
+export default [
+  {
+    name: 'Annei',
+    lastName: 'Arriola',
+    phone: [
+      { type: 'mobile', code: '52', number: '9981598073' },
+      { type: 'mobile', code: '52', number: '9988979964' },
+    ],
+    gender: 'female',
+    marital_Status: 'single',
+    favorite: false,
+  },
+  {
+    name: 'David',
+    lastName: 'Arriola',
+    phone: [{ type: 'phone', code: '52', number: '9988976734' }],
+    gender: 'M',
+    marital_Status: 'married',
+    favorite: true,
+  },
+  {
+    name: 'Ana',
+    lastName: 'Juarez',
+    phone: [
+      { type: 'mobile', code: '52', number: '9982467864' },
+      { type: 'mobile', code: '1', number: '2314783456' },
+      { type: 'phone', code: '52', number: '99881234567' },
+    ],
+    gender: 'female',
+    marital_Status: 'married',
+    favorite: false,
+  },
+  {
+    name: 'Isabel',
+    lastName: 'Gomez',
+    phone: [{ type: 'mobile', code: '52', number: '99881234567' }],
+    gender: 'female',
+    marital_Status: 'single',
+    favorite: true,
+  },
+  {
+    name: 'Leticia',
+    lastName: 'Caamal',
+    phone: [{ type: 'mobile', code: '52', number: '9981467434' }],
+    gender: 'female',
+    marital_Status: 'single',
+    favorite: true,
+  },
+  {
+    name: 'Alejandro',
+    lastName: 'López',
+    phone: [],
+    gender: 'male',
+    marital_Status: 'marriend',
+    favorite: false,
+  },
+]
