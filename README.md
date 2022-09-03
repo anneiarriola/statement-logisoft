@@ -1,9 +1,8 @@
 # logisoft2
 
 ## Demo
-```
-https://statement-logisoft.vercel.app/
-```
+[Demo](https://statement-logisoft.vercel.app/)
+
 
 ## Project setup
 ```
