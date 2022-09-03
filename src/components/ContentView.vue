@@ -1,5 +1,9 @@
 <template>
-  <div>details</div>
+  <div>
+    <v-container class="mx-3">
+      <h1 class="font-weight-bold">Welcome!</h1>
+    </v-container>
+  </div>
 </template>
 
 <script>

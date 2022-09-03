@@ -2,14 +2,11 @@
   <div>
     <v-text-field
       v-model="searchStore"
-      placeholder="jeje"
-      solo
-      dense
-      light
+      placeholder=""
+      outlined
       rounded
       label="Search friend"
       elevation="0"
-      prepend-inner-icon="mdi-map-marker"
     ></v-text-field>
   </div>
 </template>

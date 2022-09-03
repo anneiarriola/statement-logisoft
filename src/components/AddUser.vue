@@ -5,6 +5,20 @@
         <h2 class="text-left">Add Friend</h2>
       </v-row>
       <v-form ref="addFriend" @submit.prevent="addNewFriend">
+        <v-snackbar v-model="responseMessage" :timeout="timeout">
+          Created!
+
+          <template v-slot:action="{ attrs }">
+            <v-btn
+              color="blue"
+              text
+              v-bind="attrs"
+              @click="responseMessage = false"
+            >
+              Close
+            </v-btn>
+          </template>
+        </v-snackbar>
         <v-row class="mr-6">
           <v-spacer></v-spacer>
           <v-btn
@@ -109,7 +123,7 @@
         </v-row>
         <v-row class="mx-3 my-10">
           <v-spacer></v-spacer>
-          <v-btn type="submit" color="success">Create</v-btn>
+          <v-btn type="submit" color="success" @click="responseMessage = true">Create</v-btn>
         </v-row>
       </v-form>
     </v-container>
@@ -139,6 +153,8 @@ export default {
       number: '',
       valid: false,
       country: undefined,
+      timeout: 2000,
+      responseMessage: false,
     }
   },
   methods: {

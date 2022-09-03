@@ -6,10 +6,36 @@
           Edit friend : {{ detailFriendS.name }} {{ detailFriendS.lastName }}
         </h1>
       </v-row>
+      <v-flex justify-end class="my-3">
+        <v-snackbar v-model="responseMessage" :timeout="timeout">
+          Updated!
+
+          <template v-slot:action="{ attrs }">
+            <v-btn
+              color="blue"
+              text
+              v-bind="attrs"
+              @click="responseMessage = false"
+            >
+              Close
+            </v-btn>
+          </template>
+        </v-snackbar>
+
+        <div v-show="serverError">
+          <v-alert outlined text type="error"> somehtin wrong </v-alert>
+        </div>
+      </v-flex>
       <v-form ref="editFriend" @submit.prevent="editInfoFriend">
         <v-row class="mr-6">
           <v-spacer></v-spacer>
-          <v-btn class="mr-5" color="error"> Delete </v-btn>
+          <v-btn
+            @click="deleteFriend(detailFriendS.id)"
+            class="mr-5"
+            color="error"
+          >
+            Delete
+          </v-btn>
           <v-checkbox
             v-model="favorite_friend"
             off-icon="mdi-star-outline"
@@ -19,7 +45,7 @@
               "
             :value="favorite_friend"
           ></v-checkbox>
-          {{favorite_friend}}
+          {{ favorite_friend }}
         </v-row>
         <v-row>
           <v-col cols="12" md="6">
@@ -94,11 +120,27 @@
             </v-btn>
           </v-col>
         </v-row>
-        <v-row>
-          <v-btn type="submit">edit</v-btn>
+        <v-row class="mx-3 pb-10">
+          <v-spacer></v-spacer>
+          <v-col cols="12" md="2">
+            <v-btn @click="add()" block color="primary">
+              <v-icon small left>mdi-phone-plus-outline</v-icon>
+              Add phone</v-btn
+            >
+          </v-col>
+        </v-row>
+        <v-row class="my-8">
+          <v-spacer></v-spacer>
+          <v-btn to="/add-friend" outlined>Cancel</v-btn>
+          <v-btn
+            class="mx-3"
+            type="submit"
+            color="primary"
+            @click="responseMessage = true"
+            >Update</v-btn
+          >
         </v-row>
       </v-form>
-      <!-- <pre>{{ detailFriendS }}</pre> -->
     </v-container>
   </div>
 </template>
@@ -108,6 +150,9 @@ import { mapActions, mapState } from 'vuex'
 export default {
   data() {
     return {
+      responseMessage: false,
+      serverError: false,
+      timeout: 2000,
       name_edit: '',
       last_name_edit: '',
       status_marital_edit: '',
@@ -169,7 +214,6 @@ export default {
         return this.detailFriendS.favorite
       },
       set(newValue) {
-        console.log('new', newValue)
         if (newValue) {
           this.favorite_edit = newValue
         }
@@ -189,6 +233,7 @@ export default {
   methods: {
     ...mapActions({
       editFriendS: 'editFriend',
+      deleteFriendS: 'deleteFriend',
     }),
     onInput(formattedNumber, { number, valid, country }) {
       console.log('code', number)
@@ -199,12 +244,17 @@ export default {
     add() {
       this.phone.push({
         type: '',
-        // code: '',
         phone: '',
       })
     },
     remove(index) {
       this.phone.splice(index, 1)
+    },
+    deleteFriend(f) {
+      const body = {
+        id: f,
+      }
+      this.deleteFriendS(body)
     },
     editInfoFriend() {
       const body = {
@@ -216,11 +266,11 @@ export default {
         marital_status: this.status_marital_edit
           ? this.status_marital_edit
           : this.status_marital,
-        favorite: this.favorite_edit ? this.favorite_edit : this.favorite_friend
+        favorite: this.favorite_edit
+          ? this.favorite_edit
+          : this.favorite_friend,
       }
-      this.editFriendS(body).then((res) => {
-        console.log('all cool', res)
-      })
+      this.editFriendS(body)
     },
   },
 }

@@ -45,7 +45,7 @@ export default {
     }),
     filterList() {
       return this.friends.filter((post) => {
-        return post.name.toLowerCase().includes(this.searchS.toLowerCase())
+        return post.name.toLowerCase().includes(this.searchS.toLowerCase()) || post.lastName.toLowerCase().includes(this.searchS.toLowerCase())
       })
     },
   },
