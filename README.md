@@ -1,5 +1,10 @@
 # logisoft2
 
+## Demo
+```
+https://statement-logisoft.vercel.app/
+```
+
 ## Project setup
 ```
 npm install
