@@ -45,7 +45,6 @@
               "
             :value="favorite_friend"
           ></v-checkbox>
-          {{ favorite_friend }}
         </v-row>
         <v-row>
           <v-col cols="12" md="6">
@@ -105,11 +104,13 @@
               item-text="type"
               item-value="type"
               class="text-capitalize"
+              
             ></v-select>
+           
           </v-col>
           <v-col cols="12" md="5">
             <vue-tel-input-vuetify
-              v-model="phone[i].phone"
+              v-model="phoneField.number"
               @input="onInput"
               outlined
             ></vue-tel-input-vuetify>
