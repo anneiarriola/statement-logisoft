@@ -15,6 +15,11 @@ const routes = [
     path:'/add-friend',
     name: 'friend-add',
     component: () => import('../components/AddUser.vue')
+  },
+  {
+    path: '/edit-friend',
+    name: 'edit-friend',
+    component: () => import('../components/EditUser.vue')
   }
   // {
   //   path: '/about',

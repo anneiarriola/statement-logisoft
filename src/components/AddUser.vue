@@ -75,7 +75,7 @@
           <v-row v-for="(phoneField, i) in phone" :key="i">
             <v-col cols="12" md="5">
               <v-select
-                v-model="phone.type"
+                v-model="phone[i].type"
                 outlined
                 placeholder="Select type of number"
                 :items="type_number"
@@ -83,16 +83,13 @@
                 item-value="type"
                 class="text-capitalize"
               ></v-select>
-              {{ phone.type }}
             </v-col>
             <v-col cols="12" md="5">
               <vue-tel-input-vuetify
-                v-model="phone.phone"
+                v-model="phone[i].phone"
                 @input="onInput"
                 outlined
               ></vue-tel-input-vuetify>
-              {{ phone.phone }}
-              {{ phone.code }}
             </v-col>
             <v-col cols="12" md="1">
               <v-btn @click="remove(i)" color="error">
@@ -135,7 +132,10 @@ export default {
         { id: 2, type: 'phone' },
       ],
       favorite_friend: false,
-      phone: [],
+      phone: [{
+        type: '',
+        phone: '',
+      }],
       number: '',
       valid: false,
       country: undefined,
@@ -147,18 +147,19 @@ export default {
     }),
     addNewFriend() {
       this.addFriendS({
+        id: Math.floor(Math.random() * 100) + 1,
         name: this.name,
         lastName: this.last_name,
         phone: this.phone,
         gender: this.gender,
-        marital_Status: this.status_marital,
+        marital_status: this.status_marital,
         favorite: this.favorite_friend,
       }).then((res) => {
         console.log('all cool', res)
       })
     },
-    onInput(formattedNumber, { number, valid, country, code }) {
-      console.log('code', code)
+    onInput(formattedNumber, { number, valid, country }) {
+      console.log('code', number)
       this.phone.phone = number.international
       this.valid = valid
       this.phone.code = country.dialCode
@@ -166,9 +167,10 @@ export default {
     add() {
       this.phone.push({
         type: '',
-        code: '',
+        // code: '',
         phone: '',
       })
+     
     },
     remove(index) {
       this.phone.splice(index, 1)

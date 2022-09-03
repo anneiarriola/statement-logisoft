@@ -1,5 +1,6 @@
 export default [
-  {
+  { 
+    id: 1,
     name: 'Annei',
     lastName: 'Arriola',
     phone: [
@@ -7,18 +8,19 @@ export default [
       { type: 'mobile', code: '52', number: '9988979964' },
     ],
     gender: 'female',
-    marital_Status: 'single',
+    marital_status: 'single',
     favorite: false,
   },
-  {
+  { id: 2,
     name: 'David',
     lastName: 'Arriola',
     phone: [{ type: 'phone', code: '52', number: '9988976734' }],
     gender: 'M',
-    marital_Status: 'married',
+    marital_status: 'married',
     favorite: true,
   },
   {
+    id: 3,
     name: 'Ana',
     lastName: 'Juarez',
     phone: [
@@ -27,31 +29,34 @@ export default [
       { type: 'phone', code: '52', number: '99881234567' },
     ],
     gender: 'female',
-    marital_Status: 'married',
+    marital_status: 'married',
     favorite: false,
   },
   {
+    id: 4,
     name: 'Isabel',
     lastName: 'Gomez',
     phone: [{ type: 'mobile', code: '52', number: '99881234567' }],
     gender: 'female',
-    marital_Status: 'single',
+    marital_status: 'single',
     favorite: true,
   },
   {
+    id: 5,
     name: 'Leticia',
     lastName: 'Caamal',
     phone: [{ type: 'mobile', code: '52', number: '9981467434' }],
     gender: 'female',
-    marital_Status: 'single',
+    marital_status: 'single',
     favorite: true,
   },
   {
+    id: 6,
     name: 'Alejandro',
     lastName: 'López',
     phone: [],
     gender: 'male',
-    marital_Status: 'marriend',
+    marital_status: 'marriend',
     favorite: false,
   },
 ]
